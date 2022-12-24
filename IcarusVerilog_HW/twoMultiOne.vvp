@@ -1,0 +1,57 @@
+#! /opt/homebrew/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x148e05d00 .scope module, "twoMultiOne_tb" "twoMultiOne_tb" 2 3;
+ .timescale 0 0;
+v0x600003c30360_0 .net "Out", 0 0, L_0x600003f30000;  1 drivers
+v0x600003c303f0_0 .var "X", 0 0;
+v0x600003c30480_0 .var "Y", 0 0;
+v0x600003c30510_0 .var "Z", 0 0;
+S_0x148e04720 .scope module, "uut" "twoMultiOne" 2 7, 3 1 0, S_0x148e05d00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "X";
+    .port_info 1 /INPUT 1 "Y";
+    .port_info 2 /INPUT 1 "Z";
+    .port_info 3 /OUTPUT 1 "Out";
+v0x600003c30120_0 .net "Out", 0 0, L_0x600003f30000;  alias, 1 drivers
+v0x600003c301b0_0 .net "X", 0 0, v0x600003c303f0_0;  1 drivers
+v0x600003c30240_0 .net "Y", 0 0, v0x600003c30480_0;  1 drivers
+v0x600003c302d0_0 .net "Z", 0 0, v0x600003c30510_0;  1 drivers
+L_0x600003f30000 .functor MUXZ 1, v0x600003c303f0_0, v0x600003c30480_0, v0x600003c30510_0, C4<>;
+    .scope S_0x148e05d00;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "twoMultiOne.vcd" {0 0 0};
+    %vpi_call 2 11 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x148e05d00 {0 0 0};
+    %vpi_call 2 12 "$display", "time\011X\011Y\011Z\011Out" {0 0 0};
+    %vpi_call 2 13 "$monitor", "%2d\011%b\011%b\011%b\011%b", $time, v0x600003c303f0_0, v0x600003c30480_0, v0x600003c30510_0, v0x600003c30360_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600003c303f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600003c30480_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600003c30510_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600003c303f0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600003c30510_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600003c30480_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 18 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "twoMultiOne_tb.v";
+    "twoMultiOne.v";
